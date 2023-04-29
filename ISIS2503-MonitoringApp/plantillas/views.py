@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .logic.logic_plantilla import create_plantilla, get_plantillas
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def plantilla_list(request):
     plantillas = get_plantillas()
     context = {
