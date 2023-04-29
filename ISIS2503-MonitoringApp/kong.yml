@@ -1,0 +1,51 @@
+_format_version: "2.1"
+
+services:
+  - host: windmy_upstream
+    name: windmy_service
+    protocol: http
+    routes:
+      
+      - name: windmy
+        paths:
+          - /
+        strip_path: false
+
+  - host: citas_upstream
+    name: citas_service
+    protocol: http
+    routes:
+      
+      - name: citas
+        paths:
+          - /citas
+          - /citasValidate/
+        strip_path: false
+    
+upstreams:
+  - name: citas_upstream
+    targets:
+      - target: <ip-privada-citas-app-a>:8080
+        weight: 100
+      - target: <ip-privada-citas-app-b>:8080
+        weight: 100
+      - target: <ip-privada-citas-app-c>:8080
+        weight: 100
+    #healthchecks:
+    #  threshold: 0
+    #  active:
+    #    http_path: /health/
+    #    timeout: 0
+    #    healthy:
+    #      successes: 0
+    #      interval: 0
+    #    unhealthy:
+    #      tcp_failures: 0
+    #      interval: 0
+
+  - name: windmy_upstream
+    targets:
+      - target: <ip-privada-windmy-app>:8080
+        weight: 100
+
+
