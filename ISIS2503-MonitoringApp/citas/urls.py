@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     path('citas/', views.cita_list),
-    path('citasValidate/<string:historia_name>', views.generate_cita),
+    path('citasValidate/<str:historia_name>', views.generate_cita),
 ]
