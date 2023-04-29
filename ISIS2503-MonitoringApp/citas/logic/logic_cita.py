@@ -9,8 +9,7 @@ def get_citas():
     queryset = Plantilla.objects.filter(historia=historia).order_by('-dateTime')[:10]
     return (queryset) """
 
-def create_cita(plantilla):
+def create_cita():
     cita = Cita()
-    cita.plantilla = plantilla
     cita.save()
     return cita
