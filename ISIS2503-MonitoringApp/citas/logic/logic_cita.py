@@ -5,13 +5,12 @@ def get_citas():
     queryset = Cita.objects.all().order_by('-dateTime')
     return (queryset)
 
-def get_plantillas_by_historia(historia):
+""" def get_plantillas_by_historia(historia):
     queryset = Plantilla.objects.filter(historia=historia).order_by('-dateTime')[:10]
-    return (queryset)
+    return (queryset) """
 
-def create_cita( historia, plantilla):
+def create_cita(plantilla):
     cita = Cita()
-    cita.historia = historia
     cita.plantilla = plantilla
     cita.save()
     return cita
