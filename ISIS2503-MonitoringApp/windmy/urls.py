@@ -24,6 +24,4 @@ urlpatterns = [
     path('', include('plantillas.urls')),   
     path('', include('historias.urls')),
     path('', include('citas.urls')),
-    path(r'', include('django.contrib.auth.urls')),
-    path(r'', include('social_django.urls')),
 ]
